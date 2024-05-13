@@ -1,3 +1,4 @@
+# Run via 'python3 game.py' to view window
 import pygame
 import sys
 
