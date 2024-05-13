@@ -15,6 +15,7 @@ class Game:
         self.clock = pygame.time.Clock()
 
         self.img = pygame.image.load('data/images/clouds/cloud_1.png')
+        self.img.set_colorkey((0, 0, 0))
 
         self.img_pos = [160, 260]  # x,y
         self.movement = [False, False]
@@ -22,6 +23,9 @@ class Game:
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
+            # Reset screen color
+            self.screen.fill((14, 219, 248))
+
             self.img_pos[1] += self.movement[1] - \
                 self.movement[0]  # T/F as boolean 1's/0's
             self.screen.blit(self.img, self.img_pos)
