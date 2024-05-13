@@ -1,22 +1,30 @@
 import pygame
+import sys
 
-pygame.init()
 
-# Initialize the window (resolution via pixel tuple)
-pygame.display.set_caption('Jonin')
-screen = pygame.display.set_mode((640, 480))
+class Game:
+    def __init__(self):
+        pygame.init()
 
-# Force game to run 60 FPS
-clock = pygame.time.Clock()
+        # Initialize the window (resolution via pixel tuple)
+        pygame.display.set_caption('Jonin')
+        self.screen = pygame.display.set_mode((640, 480))
 
-# Important to remember: each frame is an iteration in a loop, so dynamic sleep
-while True:
-    # User input
-    for event in pygame.event.get():
-        # User quits the game
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+        # Force game to run 60 FPS
+        self.clock = pygame.time.Clock()
 
-    pygame.display.update()
-    clock.tick(60)  # 60 FPS
+    def run(self):
+        # Important to remember: each frame is an iteration in a loop, so dynamic sleep
+        while True:
+            # User input
+            for event in pygame.event.get():
+                # User quits the game
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+            pygame.display.update()
+            self.clock.tick(60)  # 60 FPS
+
+
+Game().run()
