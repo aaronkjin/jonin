@@ -14,9 +14,13 @@ class Game:
         # Force game to run 60 FPS
         self.clock = pygame.time.Clock()
 
+        self.img = pygame.image.load('data/images/clouds/cloud_1.png')
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
+            self.screen.blit(self.img, (100, 200))  # x=100, y=200
+
             # User input
             for event in pygame.event.get():
                 # User quits the game
