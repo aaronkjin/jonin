@@ -24,19 +24,6 @@ class Game:
             # Reset screen color
             self.screen.fill((14, 219, 248))
 
-            self.img_pos[1] += self.movement[1] - \
-                self.movement[0]  # T/F as boolean 1's/0's
-            self.screen.blit(self.img, self.img_pos)
-
-            img_r = pygame.Rect(
-                self.img_pos[0], self.img_pos[1], self.img.get_width(), self.img.get_height())
-            if img_r.colliderect(self.collision_area):
-                pygame.draw.rect(self.screen, (0, 100, 255),
-                                 self.collision_area)
-            else:
-                pygame.draw.rect(self.screen, (0, 50, 155),
-                                 self.collision_area)
-
             # User input
             for event in pygame.event.get():
                 # User quits the game
