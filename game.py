@@ -13,6 +13,7 @@ class Game:
         # Initialize the window (resolution via pixel tuple)
         pygame.display.set_caption('Jonin')
         self.screen = pygame.display.set_mode((640, 480))
+        self.display = pygame.Surface((320, 240))
 
         # Force game to run 60 FPS
         self.clock = pygame.time.Clock()
@@ -29,11 +30,11 @@ class Game:
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             # Reset screen color
-            self.screen.fill((14, 219, 248))
+            self.display.fill((14, 219, 248))
 
             # Player moves left and right; no need to change y-axis
             self.player.update((self.movement[1] - self.movement[0], 0))
-            self.player.render(self.screen)
+            self.player.render(self.display)
 
             # User input
             for event in pygame.event.get():
@@ -56,6 +57,7 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
+            self.screen.blit(self.display, (0, 0))
             pygame.display.update()
             self.clock.tick(60)  # 60 FPS
 
