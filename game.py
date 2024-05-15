@@ -16,6 +16,8 @@ class Game:
         # Force game to run 60 FPS
         self.clock = pygame.time.Clock()
 
+        self.movement = [False, False]
+
         self.player = PhysicsEntity(self, 'player', (50, 50), (8, 15))
 
     def run(self):
