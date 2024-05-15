@@ -28,6 +28,7 @@ class Game:
 
             # Player moves left and right; no need to change y-axis
             self.player.update((self.movement[1] - self.movement[0], 0))
+            self.player.render(self.screen)
 
             # User input
             for event in pygame.event.get():
