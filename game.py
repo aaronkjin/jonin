@@ -26,6 +26,9 @@ class Game:
             # Reset screen color
             self.screen.fill((14, 219, 248))
 
+            # Player moves left and right; no need to change y-axis
+            self.player.update((self.movement[1] - self.movement[0], 0))
+
             # User input
             for event in pygame.event.get():
                 # User quits the game
@@ -35,16 +38,16 @@ class Game:
 
                 # User presses down on a key
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.K_LEFT:
                         self.movement[0] = True
-                    if event.key == pygame.K_DOWN:
+                    if event.key == pygame.K_RIGHT:
                         self.movement[1] = True
 
                 # User lifts up from a key
                 if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.K_LEFT:
                         self.movement[0] = False
-                    if event.key == pygame.K_DOWN:
+                    if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
             pygame.display.update()
