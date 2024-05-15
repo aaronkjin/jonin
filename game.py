@@ -31,7 +31,7 @@ class Game:
 
         self.player = PhysicsEntity(self, 'player', (50, 50), (8, 15))
 
-        self.tilemap = Tilemap(tile_size=16)
+        self.tilemap = Tilemap(self, tile_size=16)
 
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
