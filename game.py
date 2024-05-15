@@ -2,6 +2,8 @@
 import pygame
 import sys
 
+from scripts.entities import PhysicsEntity
+
 
 class Game:
     def __init__(self):
@@ -14,13 +16,7 @@ class Game:
         # Force game to run 60 FPS
         self.clock = pygame.time.Clock()
 
-        self.img = pygame.image.load('data/images/clouds/cloud_1.png')
-        self.img.set_colorkey((0, 0, 0))
-
-        self.img_pos = [160, 260]  # x,y
-        self.movement = [False, False]
-
-        self.collision_area = pygame.Rect(50, 50, 300, 50)
+        self.player = PhysicsEntity(self, 'player', (50, 50), (8, 15))
 
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
