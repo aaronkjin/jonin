@@ -57,7 +57,8 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
-            self.screen.blit(self.display, (0, 0))
+            self.screen.blit(pygame.transform.scale(
+                self.display, self.screen.get_size()), (0, 0))
             pygame.display.update()
             self.clock.tick(60)  # 60 FPS
 
