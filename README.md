@@ -10,7 +10,7 @@ Quick setup to get the game running:
 
 ```bash
 # make sure Python is installed on your local machine
-python -version
+python3 --version
 
 # download PyGame
 python3 -m pip install pygame
