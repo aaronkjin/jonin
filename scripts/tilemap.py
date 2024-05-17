@@ -1,3 +1,8 @@
+# All permutations of -1 to 1 for player's position
+NEIGHBOR_OFFSETS = [(-1, 0), (-1, -1), (0, -1), (1, -1),
+                    (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)]
+
+
 class Tilemap:
     def __init__(self, game, tile_size=16):
         self.game = game
@@ -11,6 +16,21 @@ class Tilemap:
                 3 + i) + ";10"] = {"type": "grass", "variant": 1, "pos": (3 + i, 10)}
             self.tilemap["10;" + str(
                 5 + i)] = {"type": "stone", "variant": 1, "pos": (10, i + 5)}
+
+    def tiles_around(self, pos):
+        tiles = []
+        # Change pixel position to grid position
+        tile_loc = (int(pos[0] // self.tile_size),
+                    int(pos[1] // self.tile_size))
+
+        for offset in NEIGHBOR_OFFSETS:
+            check_loc = str(tile_loc[0] + offset[0]) + \
+                ";" + str(tile_loc[1] + offset[1])
+
+            if check_loc in self.tilemap:
+                tiles.append(self.tilemap[check_loc])
+
+        return tiles
 
     def render(self, surf):
         # Render logic for off-grid lists
