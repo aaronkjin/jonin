@@ -91,7 +91,7 @@ class PhysicsEntity:
 class Player(PhysicsEntity):
     # Player class inherits all of physics entity's class plus more
     def __init__(self, game, pos, size):
-        super().__init(game, "player", pos, size)
+        super().__init__(game, "player", pos, size)
         self.air_time = 0
 
     def update(self, tilemap, movement=(0, 0)):
