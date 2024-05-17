@@ -11,9 +11,22 @@ class PhysicsEntity:
         self.collisions = {"up": False, "down": False,
                            "right": False, "left": False}
 
+        self.action = ""
+        # Padding to edges of images, so there's space for animations
+        self.anim_offset = (-3, -3)
+        self.flip = False
+        self.set_action("idle")
+
     def rect(self):
         # Four corners to create the rect
         return pygame.Rect(self.pos[0], self.pos[1], self.size[0], self.size[1])
+
+    def set_action(self, action):
+        # Action has changed, so change animation
+        if action != self.action:
+            self.action = action
+            self.animation = self.assets[self.e_type +
+                                         "/" + self.action].copy()
 
     def update(self, tilemap, movement=(0, 0)):
         self.collisions = {"up": False, "down": False,
@@ -63,5 +76,9 @@ class PhysicsEntity:
             self.velocity[1] = 0
 
     def render(self, surf, offset=(0, 0)):
-        surf.blit(self.game.assets['player'],
-                  (self.pos[0] - offset[0], self.pos[1] - offset[1]))
+        # surf.blit(self.game.assets['player'],
+        #           (self.pos[0] - offset[0], self.pos[1] - offset[1]))
+
+        # If player faces left, animate towards left, and vice versa (only for x-axis)
+        surf.blit(pygame.transform.flip(
+            self.animation.img(), self.flip, False))
