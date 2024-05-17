@@ -26,7 +26,17 @@ class Clouds:
         self.clouds = []
 
         for _ in range(count):
+            # Randomly spawn clouds and their meta-attributes
             self.clouds.append(Cloud((random.random() * 99999, random.random() * 99999), random.choice(
                 cloud_images), random.random() * 0.05 + 0.05, random.random() * 0.6 + 0.2))
 
+        # Layering through depth
         self.clouds.sort(key=lambda x: x.depth)
+
+    def update(self):
+        for cloud in self.clouds:
+            cloud.update()
+
+    def render(self, surf, offset=(0, 0)):
+        for cloud in self.clouds:
+            cloud.render(surf, offset=offset)
