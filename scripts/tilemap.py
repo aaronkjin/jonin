@@ -1,6 +1,10 @@
+import pygame
+
 # All permutations of -1 to 1 for player's position
 NEIGHBOR_OFFSETS = [(-1, 0), (-1, -1), (0, -1), (1, -1),
                     (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)]
+# A set of tiles that interact with physics
+PHYSICS_TILES = {"grass", "stone"}
 
 
 class Tilemap:
@@ -31,6 +35,16 @@ class Tilemap:
                 tiles.append(self.tilemap[check_loc])
 
         return tiles
+
+    def physics_rects_around(self, pos):
+        rects = []
+
+        for tile in self.tiles_around(pos):
+            if tile["type"] in PHYSICS_TILES:
+                rects.append(pygame.Rect(
+                    tile["pos"][0] * self.tile_size, tile["pos"][1] * self.tile_size, self.tile_size))
+
+        return rects
 
     def render(self, surf):
         # Render logic for off-grid lists
