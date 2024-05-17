@@ -33,18 +33,21 @@ class Game:
 
         self.tilemap = Tilemap(self, tile_size=16)
 
+        # Camera position
+        self.scroll = [0, 0]
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             # Reset screen color
             self.display.fill((14, 219, 248))
 
-            self.tilemap.render(self.display)
+            self.tilemap.render(self.display, offset=self.scroll)
 
             # Player moves left and right; no need to change y-axis
             self.player.update(
                 self.tilemap, (self.movement[1] - self.movement[0], 0))
-            self.player.render(self.display)
+            self.player.render(self.display, offset=self.scroll)
 
             # User input
             for event in pygame.event.get():
