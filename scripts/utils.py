@@ -25,7 +25,23 @@ def load_images(path):
 class Animation:
     def __init__(self, images, img_dur=5, loop=True):
         self.images = images
-        self.img_dur = img_dur
+        self.img_duration = img_dur
         self.loop = loop
         self.done = False
         self.frame = 0
+
+    def copy(self):
+        # Passing all parameters by reference
+        return Animation(self.images, self.img_duration, self.loop)
+
+    def update(self):
+        if self.loop:
+            # Loops around when we reach the end of frame
+            self.frame = (
+                self.frame + 1) % (self.img_duration * len(self.images))
+        else:
+            self.frame = min(
+                self.frame + 1, self.img_duration * len(self.images))
+
+    def img(self):
+        return self.images[int(self.frame / self.img_duration)]
