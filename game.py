@@ -42,7 +42,8 @@ class Game:
             self.tilemap.render(self.display)
 
             # Player moves left and right; no need to change y-axis
-            self.player.update((self.movement[1] - self.movement[0], 0))
+            self.player.update(
+                self.tilemap, (self.movement[1] - self.movement[0], 0))
             self.player.render(self.display)
 
             # User input
