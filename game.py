@@ -42,6 +42,12 @@ class Game:
             # Reset screen color
             self.display.fill((14, 219, 248))
 
+            # Camera movement in relation to player
+            self.scroll[0] += (self.player.rect().centerx -
+                               self.display.get_width() / 2 - self.scroll[0]) / 30
+            self.scroll[1] += (self.player.rect().centerx -
+                               self.display.get_width() / 2 - self.scroll[1]) / 30
+
             self.tilemap.render(self.display, offset=self.scroll)
 
             # Player moves left and right; no need to change y-axis
