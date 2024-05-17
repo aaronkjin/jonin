@@ -23,6 +23,7 @@ class Game:
 
         self.assets = {
             "player": load_image("entities/player.png"),
+            "background": load_image("background.png"),
             "decor": load_images("tiles/decor"),
             "grass": load_images("tiles/grass"),
             "large_decor": load_images("tiles/large_decor"),
@@ -40,7 +41,7 @@ class Game:
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             # Reset screen color
-            self.display.fill((14, 219, 248))
+            self.display.blit(self.assets["background"], (0, 0))
 
             # Camera movement in relation to player
             self.scroll[0] += (self.player.rect().centerx -
