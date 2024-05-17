@@ -59,6 +59,8 @@ class Game:
                         self.movement[0] = True
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = True
+                    if event.key == pygame.K_UP:
+                        self.player.velocity[1] = -3
 
                 # User lifts up from a key
                 if event.type == pygame.KEYUP:
