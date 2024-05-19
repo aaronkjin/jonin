@@ -41,6 +41,7 @@ class Editor:
 
         self.clicking = False
         self.right_clicking = False
+        self.shift = False
 
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
@@ -88,6 +89,8 @@ class Editor:
                         self.movement[2] = True
                     if event.key == pygame.K_DOWN:
                         self.movement[3] = True
+                    if event.key == pygame.K_LSHIFT:
+                        self.shift = True
 
                 # User lifts up from a key
                 if event.type == pygame.KEYUP:
@@ -99,6 +102,8 @@ class Editor:
                         self.movement[2] = False
                     if event.key == pygame.K_DOWN:
                         self.movement[3] = False
+                    if event.key == pygame.K_LSHIFT:
+                        self.shift = False
 
             self.screen.blit(pygame.transform.scale(
                 self.display, self.screen.get_size()), (0, 0))
