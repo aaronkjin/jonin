@@ -34,11 +34,22 @@ class Editor:
         # Camera position
         self.scroll = [0, 0]
 
+        # List of keys in self.assets dict
+        self.tile_list = list(self.assets)
+        self.tile_group = 0
+        self.tile_variant = 0
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             # Reset screen color
             self.display.fill((0, 0, 0))
+
+            current_tile_img = self.assets[self.tile_list[self.tile_group]][self.tile_variant].copy(
+            )
+            current_tile_img.set_alpha(100)  # Somewhat transparent
+
+            self.display.blit(current_tile_img, (5, 5))
 
             # User input
             for event in pygame.event.get():
