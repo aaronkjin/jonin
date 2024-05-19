@@ -39,6 +39,9 @@ class Editor:
         self.tile_group = 0
         self.tile_variant = 0
 
+        self.clicking = False
+        self.right_clicking = False
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
@@ -57,6 +60,23 @@ class Editor:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+                # User activates mouse button/scroll wheel
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        self.clicking = True
+
+                    if event.button == 3:
+                        self.right_clicking = True
+
+                    if event.button == 4:
+                        # Loop trick with modulo
+                        self.tile_group = (
+                            self.tile_group - 1) % len(self.tile_list)
+
+                    if event.button == 5:
+                        self.tile_group = (
+                            self.tile_group + 1) % len(self.tile_list)
 
                 # User presses down on a key
                 if event.type == pygame.KEYDOWN:
