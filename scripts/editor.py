@@ -1,4 +1,4 @@
-# Run via 'python3 game.py' to view window
+# Run via 'python3 scripts/editor.py' to view window
 import pygame
 import sys
 
