@@ -94,6 +94,13 @@ class Editor:
                                 self.tile_group + 1) % len(self.tile_list)
                             self.tile_variant = 0
 
+                # Clicking variable based on mouse state
+                if event.type == pygame.MOUSEBUTTONUP:
+                    if event.button == 1:
+                        self.clicking = False
+                    if event.button == 3:
+                        self.right_clicking = False
+
                 # User presses down on a key
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
