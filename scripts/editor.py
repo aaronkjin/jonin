@@ -86,10 +86,13 @@ class Editor:
                             # Loop trick with modulo
                             self.tile_group = (
                                 self.tile_group - 1) % len(self.tile_list)
+                            # Default variant for that group
+                            self.tile_variant = 0
 
                         if event.button == 5:
                             self.tile_group = (
                                 self.tile_group + 1) % len(self.tile_list)
+                            self.tile_variant = 0
 
                 # User presses down on a key
                 if event.type == pygame.KEYDOWN:
