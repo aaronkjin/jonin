@@ -42,6 +42,7 @@ class Tilemap:
         map_data = json.load(f)
         f.close()
 
+        # Load up existing level-edited map
         self.tilemap = map_data["tilemap"]
         self.tile_size = map_data["tile_size"]
         self.offgrid_tiles = map_data["offgrid"]
