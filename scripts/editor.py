@@ -63,6 +63,10 @@ class Editor:
             tile_pos = (int(mpos[0] + self.scroll[0]) // self.tilemap.tile_size,
                         int(mpos[1] + self.scroll[1]) // self.tilemap.tile_size)
 
+            # Convert tile position to pixel coordinates
+            self.display.blit(current_tile_img, (tile_pos[0] * self.tilemap.tile_size -
+                              self.scroll[0], tile_pos[1] * self.tilemap.tile_size - self.scroll[1]))
+
             # Place tiles
             if self.clicking:
                 self.tilemap.tilemap[str(tile_pos[0]) + ";" + str(tile_pos[1])] = {
