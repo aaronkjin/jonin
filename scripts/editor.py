@@ -63,9 +63,16 @@ class Editor:
             tile_pos = (int(mpos[0] + self.scroll[0]) // self.tilemap.tile_size,
                         int(mpos[1] + self.scroll[1]) // self.tilemap.tile_size)
 
+            # Place tiles
             if self.clicking:
                 self.tilemap.tilemap[str(tile_pos[0]) + ";" + str(tile_pos[1])] = {
                     "type": self.tile_list[self.tile_group], "variant": self.tile_variant, "pos": tile_pos}
+
+            # Delete tiles
+            if self.right_clicking:
+                tile_loc = str(tile_pos[0]) + ";" + str(tile_pos[1])
+                if tile_loc in self.tilemap.tilemap:
+                    del self.tilemap.tilemap[tile_loc]
 
             self.display.blit(current_tile_img, (5, 5))
 
