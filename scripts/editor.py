@@ -131,26 +131,26 @@ class Editor:
 
                 # User presses down on a key
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_LEFT:
+                    if event.key == pygame.K_a:
                         self.movement[0] = True
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == pygame.K_d:
                         self.movement[1] = True
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.K_w:
                         self.movement[2] = True
-                    if event.key == pygame.K_DOWN:
+                    if event.key == pygame.K_s:
                         self.movement[3] = True
                     if event.key == pygame.K_LSHIFT:
                         self.shift = True
 
                 # User lifts up from a key
                 if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_LEFT:
+                    if event.key == pygame.K_a:
                         self.movement[0] = False
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == pygame.K_d:
                         self.movement[1] = False
-                    if event.key == pygame.K_UP:
+                    if event.key == pygame.K_w:
                         self.movement[2] = False
-                    if event.key == pygame.K_DOWN:
+                    if event.key == pygame.K_s:
                         self.movement[3] = False
                     if event.key == pygame.K_LSHIFT:
                         self.shift = False
