@@ -42,6 +42,7 @@ class Editor:
         self.clicking = False
         self.right_clicking = False
         self.shift = False
+        self.ongrid = True
 
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
@@ -67,11 +68,15 @@ class Editor:
                         int(mpos[1] + self.scroll[1]) // self.tilemap.tile_size)
 
             # Convert tile position to pixel coordinates for mouse hover
-            self.display.blit(current_tile_img, (tile_pos[0] * self.tilemap.tile_size -
-                              self.scroll[0], tile_pos[1] * self.tilemap.tile_size - self.scroll[1]))
+            if self.ongrid:
+                self.display.blit(current_tile_img, (tile_pos[0] * self.tilemap.tile_size -
+                                  self.scroll[0], tile_pos[1] * self.tilemap.tile_size - self.scroll[1]))
+            else:
+                # For off-grid assets
+                self.display.blit(current_tile_img, mpos)
 
-            # Place tiles
-            if self.clicking:
+                # Place tiles
+            if self.clicking and self.ongrid:
                 self.tilemap.tilemap[str(tile_pos[0]) + ";" + str(tile_pos[1])] = {
                     "type": self.tile_list[self.tile_group], "variant": self.tile_variant, "pos": tile_pos}
 
@@ -94,6 +99,9 @@ class Editor:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         self.clicking = True
+                        if not self.ongrid:
+                            self.tilemap.offgrid_tiles.append({"type": self.tile_list[self.tile_group], "variant": self.tile_variant, "pos": (
+                                mpos[0] + self.scroll[0], mpos[1] + self.scroll[1])})
 
                     if event.button == 3:
                         self.right_clicking = True
@@ -139,6 +147,8 @@ class Editor:
                         self.movement[2] = True
                     if event.key == pygame.K_s:
                         self.movement[3] = True
+                    if event.key == pygame.K_g:
+                        self.ongrid = not self.ongrid
                     if event.key == pygame.K_LSHIFT:
                         self.shift = True
 
