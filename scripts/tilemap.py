@@ -1,4 +1,5 @@
 import pygame
+import json
 
 # All permutations of -1 to 1 for player's position
 NEIGHBOR_OFFSETS = [(-1, 0), (-1, -1), (0, -1), (1, -1),
@@ -28,6 +29,13 @@ class Tilemap:
                 tiles.append(self.tilemap[check_loc])
 
         return tiles
+
+    # Save level-edited map as JSON
+    def save(self, path):
+        f = open(path, "w")
+        json.dump({"tilemap": self.tilemap, "tile_size": self.tile_size,
+                  "offgrid": self.offgrid_tiles}, f)
+        f.close()
 
     def physics_rects_around(self, pos):
         rects = []
