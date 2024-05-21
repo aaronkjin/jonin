@@ -1,5 +1,6 @@
 import pygame
 import json
+import os
 
 # All permutations of -1 to 1 for player's position
 NEIGHBOR_OFFSETS = [(-1, 0), (-1, -1), (0, -1), (1, -1),
@@ -32,6 +33,10 @@ class Tilemap:
 
     # Save level-edited map as JSON
     def save(self, path):
+        dir = os.path.dirname(path)
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+
         f = open(path, "w")
         json.dump({"tilemap": self.tilemap, "tile_size": self.tile_size,
                   "offgrid": self.offgrid_tiles}, f)

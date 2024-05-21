@@ -32,7 +32,7 @@ class Editor:
         self.tilemap = Tilemap(self, tile_size=16)
 
         try:
-            self.tilemap.load("map.json")
+            self.tilemap.load("custom/map.json")
         except FileNotFoundError:
             pass
 
@@ -163,7 +163,7 @@ class Editor:
                     if event.key == pygame.K_g:
                         self.ongrid = not self.ongrid
                     if event.key == pygame.K_o:
-                        self.tilemap.save("map.json")
+                        self.tilemap.save("custom/map.json")
                     if event.key == pygame.K_LSHIFT:
                         self.shift = True
 
