@@ -2,6 +2,7 @@
 import pygame
 import sys
 import random
+import math
 
 from scripts.entities import PhysicsEntity, Player
 from scripts.utils import load_image, load_images, Animation
@@ -96,6 +97,10 @@ class Game:
                 # Update and render leaf particles
                 kill = particle.update()
                 particle.render(self.display, offset=render_scroll)
+                if particle.type == "leaf":
+                    # Smoothly go between -1 and 1
+                    particle.pos[0] += math.sin(
+                        particle.animation.frame * 0.035) * 0.3
                 if kill:
                     self.particles.remove(particle)
 
