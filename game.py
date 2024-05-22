@@ -43,6 +43,9 @@ class Game:
 
         self.tilemap = Tilemap(self, tile_size=16)
 
+        # Load in the map e.g. "custom/map.json"
+        self.tilemap.load("custom/map.json")
+
         # Camera position
         self.scroll = [0, 0]
 
