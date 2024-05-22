@@ -1,11 +1,13 @@
 # Run via 'python3 game.py' to view window
 import pygame
 import sys
+import random
 
 from scripts.entities import PhysicsEntity, Player
 from scripts.utils import load_image, load_images, Animation
 from scripts.tilemap import Tilemap
 from scripts.clouds import Clouds
+from scripts.particle import Particle
 
 
 class Game:
@@ -71,6 +73,14 @@ class Game:
             self.scroll[1] += (self.player.rect().centery -
                                self.display.get_height() / 2 - self.scroll[1]) / 30
             render_scroll = (int(self.scroll[0]), int(self.scroll[1]))
+
+            # Spawn leaf particles at controlled rate
+            for rect in self.leaf_spawners:
+                if random.random() * 49999 < rect.width * rect.height:
+                    pos = (rect.x + random.random() * rect.width,
+                           rect.y + random.random() * rect.height)
+                    self.particles.append(
+                        Particle(self, "leaf", pos, velocity=[-0.1, 0.3], frame=random.randint(0, 20)))
 
             self.clouds.update()
             self.clouds.render(self.display, offset=render_scroll)
