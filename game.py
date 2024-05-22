@@ -54,6 +54,8 @@ class Game:
                 4 + tree["pos"][0], 4 + tree["pos"][1], 23, 13))
         print(self.leaf_spawners)
 
+        self.particles = []
+
         # Camera position
         self.scroll = [0, 0]
 
@@ -79,6 +81,13 @@ class Game:
             self.player.update(
                 self.tilemap, (self.movement[1] - self.movement[0], 0))
             self.player.render(self.display, offset=render_scroll)
+
+            for particle in self.particles.copy():
+                # Update and render leaf particles
+                kill = particle.update()
+                particle.render(self.display, offset=render_scroll)
+                if kill:
+                    self.particles.remove(particle)
 
             # User input
             for event in pygame.event.get():
