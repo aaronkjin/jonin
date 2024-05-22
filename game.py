@@ -46,7 +46,12 @@ class Game:
         # Load in the map e.g. "custom/map.json"
         self.tilemap.load("custom/map.json")
 
-        print(self.tilemap.extract([("large_decor", 2)], keep=True))
+        self.leaf_spawners = []
+        for tree in self.tilemap.extract([("large_decor", 2)], keep=True):
+            # Hitbox for tree
+            self.leaf_spawners.append(pygame.Rect(
+                4 + tree["pos"][0], 4 + tree["pos"][1], 23, 13))
+        print(self.leaf_spawners)
 
         # Camera position
         self.scroll = [0, 0]
