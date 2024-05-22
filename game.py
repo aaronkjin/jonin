@@ -98,7 +98,7 @@ class Game:
                 kill = particle.update()
                 particle.render(self.display, offset=render_scroll)
                 if particle.type == "leaf":
-                    # Smoothly go between -1 and 1
+                    # Smoothly go between -1 and 1 (sway left and right)
                     particle.pos[0] += math.sin(
                         particle.animation.frame * 0.035) * 0.3
                 if kill:
