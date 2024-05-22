@@ -55,7 +55,6 @@ class Game:
             # Hitbox for tree
             self.leaf_spawners.append(pygame.Rect(
                 4 + tree["pos"][0], 4 + tree["pos"][1], 23, 13))
-        print(self.leaf_spawners)
 
         self.particles = []
 
