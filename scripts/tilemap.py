@@ -87,6 +87,13 @@ class Tilemap:
                 check_loc = str(tile["pos"][0] + shift[0]) + \
                     ";" + str(tile["pos"][1] + shift[1])
                 if check_loc in self.tilemap:
+                    # Neighbor tile is in same group as the tile itself
+                    if self.tilemap[check_loc]["type"] == tile["type"]:
+                        neighbors.add(shift)
+
+            neighbors = tuple(sorted(neighbors))
+            if (tile["type"] in AUTOTILE_TYPES) and (neighbors in AUTOTILE_MAP):
+                tile["variant"] = AUTOTILE_MAP[neighbors]
 
     def render(self, surf, offset=(0, 0)):
         # Render logic for off-grid lists
