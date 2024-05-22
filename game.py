@@ -46,6 +46,8 @@ class Game:
         # Load in the map e.g. "custom/map.json"
         self.tilemap.load("custom/map.json")
 
+        print(self.tilemap.extract([("large_decor", 2)], keep=True))
+
         # Camera position
         self.scroll = [0, 0]
 
