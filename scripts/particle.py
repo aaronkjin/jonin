@@ -19,3 +19,9 @@ class Particle:
         self.animation.update()
 
         return kill
+
+    def render(self, surf, offset=(0, 0)):
+        img = self.animation.img()
+        # Center the particle image
+        surf.blit(img, (self.pos[0] - offset[0] - img.get_width() //
+                  2, self.pos[1] - offset[2] - img.get_height() // 2))
