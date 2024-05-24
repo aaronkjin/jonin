@@ -128,7 +128,24 @@ class Player(PhysicsEntity):
                 self.set_action("idle")
 
     def jump(self):
-        if self.jumps:
+        if self.wall_slide:
+            # Facing left and moving towards the left
+            if self.flip and self.last_movement[0] < 0:
+                self.velocity[0] = 3.5
+                self.velocity[1] = -2.5
+                self.air_time = 5  # Force to animate jump
+                self.jumps = max(0, self.jumps - 1)
+                return True
+            # Facing right and moving towards the right
+            elif not self.flip and self.last_movement > 0:
+                self.velocity[0] = 3.5
+                self.velocity[1] = -2.5
+                self.air_time = 5
+                self.jumps = max(0, self.jumps - 1)
+                return True
+
+        elif self.jumps:
             self.velocity[1] = -3
             self.jumps -= 1
-            self.air_time = 5  # Force to animate jump
+            self.air_time = 5
+            return True
