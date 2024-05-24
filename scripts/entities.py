@@ -101,6 +101,7 @@ class Player(PhysicsEntity):
         self.air_time += 1
         if self.collisions["down"]:
             self.air_time = 0
+            self.jumps = 1
 
         if self.air_time > 4:
             self.set_action("jump")
@@ -113,4 +114,4 @@ class Player(PhysicsEntity):
         if self.jumps:
             self.velocity[1] = -3
             self.jumps -= 1
-            self.air_time = 5
+            self.air_time = 5  # Force to animate jump
