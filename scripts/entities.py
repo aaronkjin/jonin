@@ -104,6 +104,21 @@ class Player(PhysicsEntity):
             self.air_time = 0
             self.jumps = 1
 
+        # A single frame switch when on a wall + in the air
+        self.wall_slide = False
+        if (self.collisions["right"] or self.collisions["left"]) and self.air_time > 4:
+            self.wall_slide = True
+            # Cap velocity to 0.5
+            self.velocity[1] = min(self.velocity[1], 0.5)
+
+            # Right wall slide animation
+            if self.collisions["right"]:
+                self.flip = False
+            # Left wall slide animation
+            else:
+                self.flip = True
+            self.set_action("wall_slide")
+
         if self.air_time > 4:
             self.set_action("jump")
         elif movement[0] != 0:
