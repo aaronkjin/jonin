@@ -119,12 +119,13 @@ class Player(PhysicsEntity):
                 self.flip = True
             self.set_action("wall_slide")
 
-        if self.air_time > 4:
-            self.set_action("jump")
-        elif movement[0] != 0:
-            self.set_action("run")
-        else:
-            self.set_action("idle")
+        if not self.wall_slide:
+            if self.air_time > 4:
+                self.set_action("jump")
+            elif movement[0] != 0:
+                self.set_action("run")
+            else:
+                self.set_action("idle")
 
     def jump(self):
         if self.jumps:
