@@ -107,3 +107,6 @@ class Player(PhysicsEntity):
             self.set_action("run")
         else:
             self.set_action("idle")
+
+    def jump(self):
+        pass
