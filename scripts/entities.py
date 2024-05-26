@@ -132,6 +132,17 @@ class Player(PhysicsEntity):
             else:
                 self.set_action("idle")
 
+        if self.dashing > 0:
+            self.dashing = max(0, self.dashing - 1)
+        if self.dashing < 0:
+            self.dashing = min(0, self.dashing + 1)
+        if abs(self.dashing > 50):
+            # 1 x 8 or -1 x 8 for first ten frames
+            self.velocity[0] = abs(self.velocity) / self.dashing * 8
+            if abs(self.dashing) == 51:
+                # Sudden stop to the dash; acts as a cooldown
+                self.velocity[0] *= 0.1
+
         # Zero as the equilibrium
         if self.velocity[0] > 0:
             self.velocity[0] = max(self.velocity[0] - 0.1, 0)
@@ -165,6 +176,6 @@ class Player(PhysicsEntity):
         if not self.dashing:
             # How much to dash + direction
             if self.flip:
-                self.dashing = -60
+                self.dashing = -60  # Velocity = speed + direction
             else:
                 self.dashing = 60
