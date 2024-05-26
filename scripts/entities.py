@@ -99,6 +99,7 @@ class Player(PhysicsEntity):
         self.air_time = 0
         self.jumps = 1
         self.wall_slide = False
+        self.dashing = 0
 
     def update(self, tilemap, movement=(0, 0)):
         super().update(tilemap, movement=movement)
@@ -159,3 +160,11 @@ class Player(PhysicsEntity):
             self.jumps -= 1
             self.air_time = 5
             return True
+
+    def dash(self):
+        if not self.dashing:
+            # How much to dash + direction
+            if self.flip:
+                self.dashing = -60
+            else:
+                self.dashing = 60
