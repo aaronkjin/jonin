@@ -136,7 +136,7 @@ class Player(PhysicsEntity):
             self.dashing = max(0, self.dashing - 1)
         if self.dashing < 0:
             self.dashing = min(0, self.dashing + 1)
-        if abs(self.dashing > 50):
+        if abs(self.dashing) > 50:
             # 1 x 8 or -1 x 8 for first ten frames
             self.velocity[0] = abs(self.velocity) / self.dashing * 8
             if abs(self.dashing) == 51:
