@@ -1,4 +1,8 @@
 import pygame
+import math
+import random
+
+from scripts.particle import Particle
 
 
 class PhysicsEntity:
@@ -143,6 +147,13 @@ class Player(PhysicsEntity):
             if abs(self.dashing) == 51:
                 # Sudden stop to the dash; acts as a cooldown
                 self.velocity[0] *= 0.1
+
+            # Add particles while dashing using trigonometry
+            angle = random.random() * math.pi * 2
+            speed = random.random() * 0.5 + 0.5
+            pvelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
+            self.game.particles.append(
+                Particle(self.game, "particle", self.rect().center, velocity=pvelocity, frame=random.randint(0, 7)))
 
         # Zero as the equilibrium
         if self.velocity[0] > 0:
