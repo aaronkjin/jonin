@@ -119,7 +119,7 @@ class Game:
                         self.movement[1] = True
                     if event.key == pygame.K_UP:
                         self.player.jump()
-                    if event.key == pygame.K_x:
+                    if event.key == pygame.K_x:  # "X" to dash
                         self.player.dash()
 
                 # User lifts up from a key
