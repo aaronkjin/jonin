@@ -149,8 +149,8 @@ class Player(PhysicsEntity):
                 self.velocity[0] *= 0.1
 
             # Add particles while dashing using trigonometry
-            angle = random.random() * math.pi * 2
-            speed = random.random() * 0.5 + 0.5
+            angle = random.random() * math.pi * 2  # Angle from circle
+            speed = random.random() * 0.5 + 0.5    # 0.5 to 1
             pvelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
             self.game.particles.append(
                 Particle(self.game, "particle", self.rect().center, velocity=pvelocity, frame=random.randint(0, 7)))
