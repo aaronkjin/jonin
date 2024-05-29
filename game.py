@@ -57,6 +57,12 @@ class Game:
             self.leaf_spawners.append(pygame.Rect(
                 4 + tree["pos"][0], 4 + tree["pos"][1], 23, 13))
 
+        for spawner in self.tilemap.extract([("spawners", 0), ("spawners", 1)]):
+            if spawner["variant"] == 0:
+                self.player.pos = spawner["pos"]
+            else:
+                print(spawner["pos"], "enemy")
+
         self.particles = []
 
         # Camera position
