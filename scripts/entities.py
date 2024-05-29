@@ -152,7 +152,7 @@ class Player(PhysicsEntity):
             angle = random.random() * math.pi * 2  # Angle from circle
             speed = random.random() * 0.5 + 0.5    # 0.5 to 1
             pvelocity = [abs(self.dashing) / self.dashing *
-                         random.random() * 3]      # 0 to 3
+                         random.random() * 3, 0]      # 0 to 3
             self.game.particles.append(
                 Particle(self.game, "particle", self.rect().center, velocity=pvelocity, frame=random.randint(0, 7)))
 
