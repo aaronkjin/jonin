@@ -148,12 +148,20 @@ class Player(PhysicsEntity):
                 # Sudden stop to the dash; acts as a cooldown
                 self.velocity[0] *= 0.1
 
+            # Stream of particles
+            angle = random.random() * math.pi * 2  # Angle from circle
+            speed = random.random() * 0.5 + 0.5    # 0.5 to 1
+            pvelocity = [abs(self.dashing) / self.dashing *
+                         random.random() * 3]      # 0 to 3
+            self.game.particles.append(
+                Particle(self.game, "particle", self.rect().center, velocity=pvelocity, frame=random.randint(0, 7)))
+
         # Burst of particles
         if abs(self.dashing) in {60, 50}:  # Start or end of dash
             for i in range(20):
                 # Add particles while dashing using trigonometry
-                angle = random.random() * math.pi * 2  # Angle from circle
-                speed = random.random() * 0.5 + 0.5    # 0.5 to 1
+                angle = random.random() * math.pi * 2
+                speed = random.random() * 0.5 + 0.5
                 pvelocity = [math.cos(angle) * speed, math.sin(angle) * speed]
                 self.game.particles.append(
                     Particle(self.game, "particle", self.rect().center, velocity=pvelocity, frame=random.randint(0, 7)))
