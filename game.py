@@ -33,6 +33,8 @@ class Game:
             "grass": load_images("tiles/grass"),
             "large_decor": load_images("tiles/large_decor"),
             "stone": load_images("tiles/stone"),
+            "enemy/idle": Animation(load_images("entities/enemy/idle"), img_dur=6),
+            "enemy/run": Animation(load_images("entities/enemy/run"), img_dur=4),
             "player/idle": Animation(load_images("entities/player/idle"), img_dur=6),
             "player/run": Animation(load_images("entities/player/run"), img_dur=4),
             "player/jump": Animation(load_images("entities/player/jump")),
