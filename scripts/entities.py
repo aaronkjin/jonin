@@ -97,7 +97,8 @@ class PhysicsEntity:
 
 
 class Enemy(PhysicsEntity):
-    pass
+    def __init__(self, game, pos, size):
+        super().__init__(game, "enemy", pos, size)
 
 
 class Player(PhysicsEntity):
