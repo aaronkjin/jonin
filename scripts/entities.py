@@ -124,10 +124,16 @@ class Enemy(PhysicsEntity):
                 dis = (self.game.player.pos[0] - self.pos[0],
                        self.game.player.pos[1] - self.pos[1])
 
+                # Enemy is able to shoot player
                 if (abs(dis[1]) < 16):
+                    # Facing left
                     if (self.flip and dis[0] < 0):
-                        # Enemy is able to shoot player
-                        pass
+                        self.game.projectiles.append(
+                            [[self.rect().centerx - 7, self.rect().centery], -1.5, 0])
+                    # Facing right
+                    if (not self.flip and dis[0] > 0):
+                        self.game.projectiles.append(
+                            [[self.rect().centerx + 7, self.rect().centery], 1.5, 0])
 
         # 1 in every 1.67 seconds because 60 FPS
         elif random.random() < 0.01:
