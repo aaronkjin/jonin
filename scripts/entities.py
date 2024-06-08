@@ -121,9 +121,15 @@ class Enemy(PhysicsEntity):
             self.walking = max(0, self.walking - 1)
 
             if not self.walking:
-                pass
+                dis = (self.game.player.pos[0] - self.pos[0],
+                       self.game.player.pos[1] - self.pos[1])
 
-                # 1 in every 1.67 seconds because 60 FPS
+                if (abs(dis[1]) < 16):
+                    if (self.flip and dis[0] < 0):
+                        # Enemy is able to shoot player
+                        pass
+
+        # 1 in every 1.67 seconds because 60 FPS
         elif random.random() < 0.01:
             # 0.5 seconds to 2 seconds
             self.walking = random.randint(30, 120)
