@@ -131,6 +131,14 @@ class Enemy(PhysicsEntity):
         else:
             self.set_action("idle")
 
+    def render(self, surf, offset=(0, 0)):
+        super().render(surf, offset=offset)
+
+        if self.flip:
+            pass
+        else:
+            pass
+
 
 class Player(PhysicsEntity):
     # Player class inherits all of physics entity's class plus more
