@@ -125,6 +125,9 @@ class Game:
                     self.projectiles.remove(projectile)
                 # Dashing makes player invincible against projectiles
                 elif abs(self.player.dashing) < 50:
+                    if self.player.rect().collidepoint(projectile[0]):
+                        # Hit the player!
+                        self.projectiles.remove(projectile)
 
             for particle in self.particles.copy():
                 # Update and render leaf particles
