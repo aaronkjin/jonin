@@ -74,6 +74,9 @@ class Game:
         # Camera position
         self.scroll = [0, 0]
 
+    def load_level(self, map_id):
+        self.tilemap.load("data/maps/" + str(map_id) + ".json")
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
