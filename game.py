@@ -52,8 +52,8 @@ class Game:
 
         self.tilemap = Tilemap(self, tile_size=16)
 
-        # Load in the map e.g. "custom/map.json"
-        self.tilemap.load("custom/map.json")
+        # Load in the map e.g. 0, 1, 2
+        self.load_level(0)
 
     def load_level(self, map_id):
         self.tilemap.load("data/maps/" + str(map_id) + ".json")
