@@ -107,11 +107,14 @@ class Enemy(PhysicsEntity):
         if self.walking:
             # Scan forward-facing direction and into the ground
             if tilemap.solid_check((self.rect().centerx + (-7 if self.flip else 7), self.pos[1] + 23)):
-                # Walk in one direction
-                movement = (
-                    movement[0] - 0.5 if self.flip else 0.5, movement[1])
+                if (self.collisions["right"] or self.collisions["left"]):
+                    # Flip around like a Koopa when running into walls
+                    self.flip = not self.flip
+                else:
+                    # Walk in one direction
+                    movement = (
+                        movement[0] - 0.5 if self.flip else 0.5, movement[1])
             else:
-                # Flip around like a Koopa
                 self.flip = not self.flip
             self.walking = max(0, self.walking - 1)
 
