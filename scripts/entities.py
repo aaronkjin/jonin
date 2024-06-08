@@ -105,10 +105,12 @@ class Enemy(PhysicsEntity):
 
     def update(self, tilemap, movement=(0, 0)):
         if self.walking:
-            pass
+            # Walk in one direction
+            movement = (movement[0] - 0.5 if self.flip else 0.5, movement[1])
 
         # 1 in every 1.67 seconds because 60 FPS
         elif random.random() < 0.01:
+            # 0.5 seconds to 2 seconds
             self.walking = random.randint(30, 120)
 
         super().update(tilemap, movement=movement)
