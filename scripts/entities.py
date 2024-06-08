@@ -135,7 +135,9 @@ class Enemy(PhysicsEntity):
         super().render(surf, offset=offset)
 
         if self.flip:
-            pass
+            # Load gun to make it flippable and placed correctly on enemy
+            surf.blit(pygame.transform.flip(self.game.assets["gun"], True, False), (self.rect(
+            ).centerx - 4 - self.assets["gun"].get_width() - offset[0], self.rect().centery - offset[1]))
         else:
             pass
 
