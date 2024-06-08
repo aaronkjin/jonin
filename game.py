@@ -97,6 +97,10 @@ class Game:
 
             self.tilemap.render(self.display, offset=render_scroll)
 
+            for enemy in self.enemies.copy():
+                enemy.update(self.tilemap, (0, 0))
+                enemy.render(self.display, offset=render_scroll)
+
             # Player moves left and right; no need to change y-axis
             self.player.update(
                 self.tilemap, (self.movement[1] - self.movement[0], 0))
