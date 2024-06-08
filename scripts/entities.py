@@ -116,9 +116,14 @@ class Enemy(PhysicsEntity):
                         movement[0] - 0.5 if self.flip else 0.5, movement[1])
             else:
                 self.flip = not self.flip
+
+            # 1 frame between walking and not walking
             self.walking = max(0, self.walking - 1)
 
-        # 1 in every 1.67 seconds because 60 FPS
+            if not self.walking:
+                pass
+
+                # 1 in every 1.67 seconds because 60 FPS
         elif random.random() < 0.01:
             # 0.5 seconds to 2 seconds
             self.walking = random.randint(30, 120)
