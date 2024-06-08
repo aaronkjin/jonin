@@ -125,7 +125,7 @@ class Enemy(PhysicsEntity):
 
         super().update(tilemap, movement=movement)
 
-        # Either moving or staying still
+        # Animation: either moving or staying still
         if movement[0] != 0:
             self.set_action("run")
         else:
