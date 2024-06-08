@@ -107,6 +107,7 @@ class Enemy(PhysicsEntity):
         if self.walking:
             # Walk in one direction
             movement = (movement[0] - 0.5 if self.flip else 0.5, movement[1])
+            self.walking = max(0, self.walking - 1)
 
         # 1 in every 1.67 seconds because 60 FPS
         elif random.random() < 0.01:
