@@ -55,6 +55,9 @@ class Game:
         # Load in the map e.g. "custom/map.json"
         self.tilemap.load("custom/map.json")
 
+    def load_level(self, map_id):
+        self.tilemap.load("data/maps/" + str(map_id) + ".json")
+
         self.leaf_spawners = []
         for tree in self.tilemap.extract([("large_decor", 2)], keep=True):
             # Hitbox for tree
@@ -73,9 +76,6 @@ class Game:
 
         # Camera position
         self.scroll = [0, 0]
-
-    def load_level(self, map_id):
-        self.tilemap.load("data/maps/" + str(map_id) + ".json")
 
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
