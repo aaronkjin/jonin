@@ -125,6 +125,12 @@ class Enemy(PhysicsEntity):
 
         super().update(tilemap, movement=movement)
 
+        # Either moving or staying still
+        if movement[0] != 0:
+            self.set_action("run")
+        else:
+            self.set_action("idle")
+
 
 class Player(PhysicsEntity):
     # Player class inherits all of physics entity's class plus more
