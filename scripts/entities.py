@@ -100,6 +100,19 @@ class Enemy(PhysicsEntity):
     def __init__(self, game, pos, size):
         super().__init__(game, "enemy", pos, size)
 
+        # Walking movement like a Koopa from Mario
+        self.walking = 0
+
+    def update(self, tilemap, movement=(0, 0)):
+        if self.walking:
+            pass
+
+        # 1 in every 1.67 seconds because 60 FPS
+        elif random.random() < 0.01:
+            self.walking = random.randint(30, 120)
+
+        super().update(tilemap, movement=movement)
+
 
 class Player(PhysicsEntity):
     # Player class inherits all of physics entity's class plus more
