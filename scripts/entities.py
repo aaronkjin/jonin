@@ -137,10 +137,10 @@ class Enemy(PhysicsEntity):
         if self.flip:
             # Load gun to make it flippable and placed correctly on enemy
             surf.blit(pygame.transform.flip(self.game.assets["gun"], True, False), (self.rect(
-            ).centerx - 4 - self.game.assets["gun"].get_width() - offset[0], self.rect().centery - offset[1]))
+            ).centerx - 3 - self.game.assets["gun"].get_width() - offset[0], self.rect().centery - offset[1]))
         else:
             surf.blit(self.game.assets["gun"], (self.rect(
-            ).centerx + 4 - offset[0], self.rect().centery - offset[1]))
+            ).centerx + 3 - offset[0], self.rect().centery - offset[1]))
 
 
 class Player(PhysicsEntity):
