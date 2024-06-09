@@ -73,6 +73,7 @@ class Game:
 
         self.projectiles = []
         self.particles = []
+        self.sparks = []
 
         # Camera position
         self.scroll = [0, 0]
@@ -131,6 +132,13 @@ class Game:
                     if self.player.rect().collidepoint(projectile[0]):
                         # Hit the player!
                         self.projectiles.remove(projectile)
+
+            # Self-managing for updating and removing sparks
+            for spark in self.sparks.copy():
+                kill = spark.update()
+                spark.render(self.display, offset=render_scroll)
+                if self.kill:
+                    self.sparks.remove(spark)
 
             for particle in self.particles.copy():
                 # Update and render leaf particles
