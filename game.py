@@ -126,7 +126,7 @@ class Game:
                 if self.tilemap.solid_check(projectile[0]):
                     self.projectiles.remove(projectile)
 
-                    for i in range(4):
+                    for _ in range(4):
                         # Shoot sparks to the left iff sparks are facing right
                         self.sparks.append(
                             Spark(projectile[0], random.random() - 0.5 + (math.pi if projectile[1] > 0 else 0), 2 + random.random()))
