@@ -153,7 +153,7 @@ class Game:
             for spark in self.sparks.copy():
                 kill = spark.update()
                 spark.render(self.display, offset=render_scroll)
-                if self.kill:
+                if kill:
                     self.sparks.remove(spark)
 
             for particle in self.particles.copy():
