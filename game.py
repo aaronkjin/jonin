@@ -147,7 +147,7 @@ class Game:
                             self.sparks.append(
                                 Spark(self.player.rect().center, angle, 2 + random.random()))
                             self.particles.append(Particle(self.game, "particle", self.player.rect().center, velocity=[
-                                                  math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5]))
+                                                  math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5], frame=random.randint(0, 7)))
 
             # Self-managing for updating and removing sparks
             for spark in self.sparks.copy():
