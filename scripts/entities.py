@@ -135,7 +135,7 @@ class Enemy(PhysicsEntity):
                         for _ in range(4):
                             # Unit circle logic with variance added to speed
                             self.game.sparks.append(Spark(
-                                self.projectiles[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
+                                self.game.projectiles[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
                     # Facing right
                     if (not self.flip and dis[0] > 0):
                         self.game.projectiles.append(
@@ -143,7 +143,7 @@ class Enemy(PhysicsEntity):
 
                         for _ in range(4):
                             self.game.sparks.append(Spark(
-                                self.projectiles[-1][0], random.random() - 0.5, 2 + random.random()))
+                                self.game.projectiles[-1][0], random.random() - 0.5, 2 + random.random()))
 
         # 1 in every 1.67 seconds because 60 FPS
         elif random.random() < 0.01:
