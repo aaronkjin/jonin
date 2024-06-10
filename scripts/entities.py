@@ -132,7 +132,7 @@ class Enemy(PhysicsEntity):
                         self.game.projectiles.append(
                             [[self.rect().centerx - 7, self.rect().centery], -1.5, 0])
 
-                        for i in range(4):
+                        for _ in range(4):
                             # Unit circle logic with variance added to speed
                             self.sparks.append(Spark(
                                 self.projectiles[-1][0], random.random() - 0.5 + math.pi, 2 + random.random()))
@@ -141,7 +141,7 @@ class Enemy(PhysicsEntity):
                         self.game.projectiles.append(
                             [[self.rect().centerx + 7, self.rect().centery], 1.5, 0])
 
-                        for i in range(4):
+                        for _ in range(4):
                             self.sparks.append(Spark(
                                 self.projectiles[-1][0], random.random() - 0.5, 2 + random.random()))
 
@@ -212,7 +212,7 @@ class Player(PhysicsEntity):
 
         # Burst of particles
         if abs(self.dashing) in {60, 50}:  # Start or end of dash
-            for i in range(20):
+            for _ in range(20):
                 # Add particles while dashing using trigonometry
                 angle = random.random() * math.pi * 2  # Angle from circle
                 speed = random.random() * 0.5 + 0.5    # 0.5 to 1
