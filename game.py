@@ -139,6 +139,16 @@ class Game:
                         # Hit the player!
                         self.projectiles.remove(projectile)
 
+                        # Lots of animations upon player death
+                        for _ in range(30):
+                            # Random angle in circle
+                            angle = random.random() * math.pi * 2
+                            speed = random.random() * 5
+                            self.sparks.append(
+                                Spark(self.player.rect().center, angle, 2 + random.random()))
+                            self.particles.append(Particle(self.game, "particle", self.player.rect().center, velocity=[
+                                                  math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5]))
+
             # Self-managing for updating and removing sparks
             for spark in self.sparks.copy():
                 kill = spark.update()
