@@ -9,6 +9,7 @@ from scripts.utils import load_image, load_images, Animation
 from scripts.tilemap import Tilemap
 from scripts.clouds import Clouds
 from scripts.particle import Particle
+from scripts.spark import Spark
 
 
 class Game:
@@ -124,6 +125,11 @@ class Game:
                 # Check if location of projectile is solid, i.e. it hit something
                 if self.tilemap.solid_check(projectile[0]):
                     self.projectiles.remove(projectile)
+
+                    for i in range(4):
+                        # Shoot sparks to the left iff sparks are facing right
+                        self.sparks.append(
+                            Spark(projectile[0], random.random() - 0.5 + (math.pi if projectile[1] > 0 else 0), 2 + random.random()))
                 # Remove projectiles that have been flying for more than 6 secs
                 elif projectile[2] > 360:
                     self.projectiles.remove(projectile)
