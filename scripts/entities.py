@@ -161,7 +161,7 @@ class Enemy(PhysicsEntity):
         # Player's hitbox collides into enemy's hitbox while they are dashing
         if abs(self.game.player.dashing) >= 50:
             if self.rect().colliderect(self.game.player.rect()):
-                pass
+                return True
 
     def render(self, surf, offset=(0, 0)):
         super().render(surf, offset=offset)
