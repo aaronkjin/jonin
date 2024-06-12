@@ -19,11 +19,14 @@ python3 -m pip install pygame
 
 # run game.py from the root directory
 python3 game.py
-
-# use the arrow keys to move Jonin
 ```
 
 This opens up a playable window on your local machine.
+
+## How to Play
+
+1. Use arrow keys to move Jonin.
+2. Use "x" key to dash.
 
 ## Developer
 
