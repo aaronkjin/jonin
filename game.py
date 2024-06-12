@@ -88,6 +88,14 @@ class Game:
             # Reset screen color
             self.display.blit(self.assets["background"], (0, 0))
 
+            # Death has been tracked!
+            if self.dead:
+                self.dead += 1
+
+                # 40 frames a.k.a. 2/3 of a second
+                if self.dead > 40:
+                    self.load_level(0)
+
             # Camera movement in relation to player
             self.scroll[0] += (self.player.rect().centerx -
                                self.display.get_width() / 2 - self.scroll[0]) / 30
