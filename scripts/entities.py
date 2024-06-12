@@ -170,9 +170,9 @@ class Enemy(PhysicsEntity):
                     self.game.particles.append(Particle(self.game, "particle", self.rect().center, velocity=[
                         math.cos(angle + math.pi) * speed * 0.5, math.sin(angle + math.pi) * speed * 0.5], frame=random.randint(0, 7)))
                 # Right and left sparks with unit circle math
-                self.sparks.append(
+                self.game.sparks.append(
                     Spark(self.rect().center, 0, 5 + random.random()))
-                self.sparks.append(
+                self.game.sparks.append(
                     Spark(self.rect().center, math.pi, 5 + random.random()))
 
                 return True
