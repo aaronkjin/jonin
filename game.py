@@ -124,10 +124,11 @@ class Game:
                 if kill:
                     self.enemies.remove(enemy)
 
-            # Player moves left and right; no need to change y-axis
-            self.player.update(
-                self.tilemap, (self.movement[1] - self.movement[0], 0))
-            self.player.render(self.display, offset=render_scroll)
+            if not self.dead:
+                # Player moves left and right; no need to change y-axis
+                self.player.update(
+                    self.tilemap, (self.movement[1] - self.movement[0], 0))
+                self.player.render(self.display, offset=render_scroll)
 
             # [[x, y], direction, timer]
             for projectile in self.projectiles.copy():
