@@ -79,6 +79,9 @@ class Game:
         # Camera position
         self.scroll = [0, 0]
 
+        # Track player's death
+        self.dead = 0
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
@@ -142,6 +145,8 @@ class Game:
                     if self.player.rect().collidepoint(projectile[0]):
                         # Hit the player!
                         self.projectiles.remove(projectile)
+
+                        self.dead += 1
 
                         # Lots of animations upon player death
                         for _ in range(30):
