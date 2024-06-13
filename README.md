@@ -6,7 +6,7 @@ Currently building 👷‍♂️
 
 <img width="1000" alt="Screenshot 2024-06-08 at 4 03 23 PM" src="https://github.com/aaronkjin/jonin/assets/58490258/0a68f56e-fa8e-44cb-b357-21c972e36cc3">
 
-## Getting Started
+## Getting Started!
 
 Quick setup to get the game running:
 
