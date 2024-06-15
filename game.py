@@ -216,8 +216,11 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
+            # Random modification from pixels 0 to screenshake value
+            screenshake_offset = (
+                random.random() * self.screenshake - self.screenshake / 2, random.random() * self.screenshake - self.screenshake / 2)
             self.screen.blit(pygame.transform.scale(
-                self.display, self.screen.get_size()), (0, 0))
+                self.display, self.screen.get_size()), screenshake_offset)
             pygame.display.update()
             self.clock.tick(60)  # 60 FPS
 
