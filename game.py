@@ -56,6 +56,8 @@ class Game:
         # Load in the map e.g. 0, 1, 2
         self.load_level(0)
 
+        self.screenshake = 0
+
     def load_level(self, map_id):
         self.tilemap.load("data/maps/" + str(map_id) + ".json")
 
@@ -88,6 +90,9 @@ class Game:
         while True:
             # Reset screen color
             self.display.blit(self.assets["background"], (0, 0))
+
+            # Screenshake timer goes down to 0
+            self.screenshake = max(0, self.screenshake - 1)
 
             # Death has been tracked!
             if self.dead:
