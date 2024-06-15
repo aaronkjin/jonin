@@ -162,6 +162,7 @@ class Game:
                         self.projectiles.remove(projectile)
 
                         self.dead += 1
+                        self.screenshake = max(16, self.screenshake)
 
                         # Lots of animations upon player death
                         for _ in range(30):
