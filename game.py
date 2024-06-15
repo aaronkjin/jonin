@@ -233,10 +233,13 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
+            # Draw level transition circle animation
             if self.transition:
                 transition_surf = pygame.Surface(self.display.get_size())
                 pygame.draw.circle(transition_surf, (255, 255, 255), (self.display.get_width(
                 ) // 2, self.display.get_height() // 2), (30 - abs(self.transition)) * 8)
+                transition_surf.set_colorkey((255, 255, 255))
+                self.display.blit(transition_surf, (0, 0))
 
             # Random modification from pixels 0 to screenshake value
             screenshake_offset = (
