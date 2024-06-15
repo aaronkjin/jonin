@@ -114,6 +114,9 @@ class Game:
             if self.dead:
                 self.dead += 1
 
+                if self.dead >= 10:
+                    self.transition = min(30, self.transition + 1)
+
                 # 40 frames a.k.a. 2/3 of a second
                 if self.dead > 40:
                     self.load_level(self.level)
