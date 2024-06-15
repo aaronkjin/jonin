@@ -161,7 +161,7 @@ class Enemy(PhysicsEntity):
         # Player's hitbox collides into enemy's hitbox while they are dashing
         if abs(self.game.player.dashing) >= 50:
             if self.rect().colliderect(self.game.player.rect()):
-                self.game.screenshake = max(16, self.screenshake)
+                self.game.screenshake = max(16, self.game.screenshake)
 
                 for _ in range(30):
                     # Random angle in circle
@@ -207,8 +207,9 @@ class Player(PhysicsEntity):
 
         # Falling for more than 2 seconds
         if self.air_time > 120:
+            if not self.game.dead:
+                self.game.screenshake = max(16, self.game.screenshake)
             self.game.dead += 1
-            self.game.screenshake = max(16, self.screenshake)
 
         if self.collisions["down"]:
             self.air_time = 0
