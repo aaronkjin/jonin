@@ -233,6 +233,9 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = False
 
+            if self.transition:
+                transition_surf = pygame.Surface(self.display.get_size())
+
             # Random modification from pixels 0 to screenshake value
             screenshake_offset = (
                 random.random() * self.screenshake - self.screenshake / 2, random.random() * self.screenshake - self.screenshake / 2)
