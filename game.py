@@ -86,6 +86,9 @@ class Game:
         # Track player's death
         self.dead = 0
 
+        # Transition between levels upon success
+        self.transition = -30
+
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
@@ -94,6 +97,10 @@ class Game:
 
             # Screenshake timer goes down to 0
             self.screenshake = max(0, self.screenshake - 1)
+
+            # Killed all the enemies in the level
+            if not len(self.enemies):
+                self.transition += 1
 
             # Death has been tracked!
             if self.dead:
