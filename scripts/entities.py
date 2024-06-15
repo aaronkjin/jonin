@@ -207,7 +207,8 @@ class Player(PhysicsEntity):
 
         # Falling for more than 2 seconds
         if self.air_time > 120:
-            self.game.screenshake = max(16, self.game.screenshake)
+            if not self.game.dead:
+                self.game.screenshake = max(16, self.game.screenshake)
             self.game.dead += 1
 
         if self.collisions["down"]:
