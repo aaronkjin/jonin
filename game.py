@@ -102,6 +102,14 @@ class Game:
             if not len(self.enemies):
                 self.transition += 1
 
+                # Absolute is 30 = black screen; Absolute is 0 = can see everything
+                if self.transition > 30:
+                    self.level += 1
+                    self.load_level(self.level)
+
+            if self.transition < 0:
+                self.transition += 1
+
             # Death has been tracked!
             if self.dead:
                 self.dead += 1
