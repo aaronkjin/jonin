@@ -27,6 +27,7 @@ This opens up a playable window on your local machine.
 
 1. Use arrow keys to move Jonin.
 2. Use "x" key to dash.
+3. Beat all enemies, and move on to the next level.
 
 ## Developer
 
