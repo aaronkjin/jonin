@@ -161,6 +161,8 @@ class Enemy(PhysicsEntity):
         # Player's hitbox collides into enemy's hitbox while they are dashing
         if abs(self.game.player.dashing) >= 50:
             if self.rect().colliderect(self.game.player.rect()):
+                self.game.screenshake = max(16, self.screenshake)
+
                 for _ in range(30):
                     # Random angle in circle
                     angle = random.random() * math.pi * 2
