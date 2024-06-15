@@ -106,7 +106,7 @@ class Game:
                 # Absolute is 30 = black screen; Absolute is 0 = can see everything
                 if self.transition > 30:
                     self.level = min(
-                        len(os.listdir("data/maps")), self.level + 1)
+                        len(os.listdir("data/maps")) - 1, self.level + 1)
                     self.load_level(self.level)
 
             if self.transition < 0:
