@@ -54,7 +54,8 @@ class Game:
         self.tilemap = Tilemap(self, tile_size=16)
 
         # Load in the map e.g. 0, 1, 2
-        self.load_level(0)
+        self.level = 0
+        self.load_level(self.level)
 
         self.screenshake = 0
 
@@ -100,7 +101,7 @@ class Game:
 
                 # 40 frames a.k.a. 2/3 of a second
                 if self.dead > 40:
-                    self.load_level(0)
+                    self.load_level(self.level)
 
             # Camera movement in relation to player
             self.scroll[0] += (self.player.rect().centerx -
