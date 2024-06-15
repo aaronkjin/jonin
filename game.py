@@ -235,6 +235,8 @@ class Game:
 
             if self.transition:
                 transition_surf = pygame.Surface(self.display.get_size())
+                pygame.draw.circle(transition_surf, (255, 255, 255), (self.display.get_width(
+                ) // 2, self.display.get_height() // 2), (30 - abs(self.transition)) * 8)
 
             # Random modification from pixels 0 to screenshake value
             screenshake_offset = (
