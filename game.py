@@ -94,6 +94,7 @@ class Game:
     def run(self):
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
+            self.display.fill((0, 0, 0, 0))
             # Reset screen color
             self.display_2.blit(self.assets["background"], (0, 0))
 
