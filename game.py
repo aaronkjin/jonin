@@ -95,7 +95,7 @@ class Game:
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             # Reset screen color
-            self.display.blit(self.assets["background"], (0, 0))
+            self.display_2.blit(self.assets["background"], (0, 0))
 
             # Screenshake timer goes down to 0
             self.screenshake = max(0, self.screenshake - 1)
