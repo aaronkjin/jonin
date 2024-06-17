@@ -254,6 +254,9 @@ class Game:
                 transition_surf.set_colorkey((255, 255, 255))
                 self.display.blit(transition_surf, (0, 0))
 
+            # Render original display over sillhouette
+            self.display_2.blit(self.display, (0, 0))
+
             # Random modification from pixels 0 to screenshake value
             screenshake_offset = (
                 random.random() * self.screenshake - self.screenshake / 2, random.random() * self.screenshake - self.screenshake / 2)
