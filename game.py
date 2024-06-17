@@ -208,6 +208,7 @@ class Game:
             display_mask = pygame.mask.from_surface(self.display)
             display_sillhouette = display_mask.to_surface(
                 setcolor=(0, 0, 0, 180), unsetcolor=(0, 0, 0, 0))
+            self.display_2.blit(display_sillhouette, (0, 0))
 
             for particle in self.particles.copy():
                 # Update and render leaf particles
@@ -257,7 +258,7 @@ class Game:
             screenshake_offset = (
                 random.random() * self.screenshake - self.screenshake / 2, random.random() * self.screenshake - self.screenshake / 2)
             self.screen.blit(pygame.transform.scale(
-                self.display, self.screen.get_size()), screenshake_offset)
+                self.display_2, self.screen.get_size()), screenshake_offset)
             pygame.display.update()
             self.clock.tick(60)  # 60 FPS
 
