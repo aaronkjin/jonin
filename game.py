@@ -20,7 +20,8 @@ class Game:
         # Initialize the window (resolution via pixel tuple)
         pygame.display.set_caption('Jonin')
         self.screen = pygame.display.set_mode((640, 480))
-        self.display = pygame.Surface((320, 240))
+        self.display = pygame.Surface((320, 240), pygame.SRCALPHA)
+        self.display_2 = pygame.Surface((320, 240))
 
         # Force game to run 60 FPS
         self.clock = pygame.time.Clock()
