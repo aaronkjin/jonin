@@ -204,8 +204,10 @@ class Game:
                 if kill:
                     self.sparks.remove(spark)
 
-            # Mask for image with two colors
+            # Mask for image with two colors (for binary operations)
             display_mask = pygame.mask.from_surface(self.display)
+            display_sillhouette = display_mask.to_surface(
+                setcolor=(0, 0, 0, 180), unsetcolor=(0, 0, 0, 0))
 
             for particle in self.particles.copy():
                 # Update and render leaf particles
