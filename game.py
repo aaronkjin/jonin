@@ -57,6 +57,12 @@ class Game:
             "ambience": pygame.mixer.Sound("data/sfx/ambience.wav"),
         }
 
+        self.sfx["jump"].set_volume(0.7)
+        self.sfx["dash"].set_volume(0.3)
+        self.sfx["hit"].set_volume(0.8)
+        self.sfx["shoot"].set_volume(0.4)
+        self.sfx["ambience"].set_volume(0.2)
+
         self.clouds = Clouds(self.assets["clouds"], count=16)
 
         self.player = Player(self, (50, 50), (8, 15))
