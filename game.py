@@ -57,6 +57,7 @@ class Game:
             "ambience": pygame.mixer.Sound("data/sfx/ambience.wav"),
         }
 
+        # Adjust all sfx volumes
         self.sfx["jump"].set_volume(0.7)
         self.sfx["dash"].set_volume(0.3)
         self.sfx["hit"].set_volume(0.8)
