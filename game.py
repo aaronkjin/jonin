@@ -141,7 +141,7 @@ class Game:
                         Particle(self, "leaf", pos, velocity=[-0.1, 0.3], frame=random.randint(0, 20)))
 
             self.clouds.update()
-            self.clouds.render(self.display, offset=render_scroll)
+            self.clouds.render(self.display_2, offset=render_scroll)
 
             self.tilemap.render(self.display, offset=render_scroll)
 
@@ -210,7 +210,7 @@ class Game:
                 setcolor=(0, 0, 0, 180), unsetcolor=(0, 0, 0, 0))
 
             # Outline for left, right, up, down offsets
-            outline_offset = 0.5  # Change to 1 if deeper outlines desired
+            outline_offset = 1  # Change to 1 if deeper outlines desired; 0 for no outlines
             for offset in [(-outline_offset, 0), (outline_offset, 0), (0, -outline_offset), (0, outline_offset)]:
                 self.display_2.blit(display_sillhouette, offset)
 
