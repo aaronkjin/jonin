@@ -208,7 +208,11 @@ class Game:
             display_mask = pygame.mask.from_surface(self.display)
             display_sillhouette = display_mask.to_surface(
                 setcolor=(0, 0, 0, 180), unsetcolor=(0, 0, 0, 0))
-            self.display_2.blit(display_sillhouette, (0, 0))
+
+            # Outline for left, right, up, down offsets
+            outline_offset = 0.5  # Change to 1 if deeper outlines desired
+            for offset in [(-outline_offset, 0), (outline_offset, 0), (0, -outline_offset), (0, outline_offset)]:
+                self.display_2.blit(display_sillhouette, offset)
 
             for particle in self.particles.copy():
                 # Update and render leaf particles
@@ -254,7 +258,7 @@ class Game:
                 transition_surf.set_colorkey((255, 255, 255))
                 self.display.blit(transition_surf, (0, 0))
 
-            # Render original display over sillhouette
+            # Render original display over sillhouette display
             self.display_2.blit(self.display, (0, 0))
 
             # Random modification from pixels 0 to screenshake value
