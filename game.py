@@ -107,6 +107,8 @@ class Game:
         self.transition = -30
 
     def run(self):
+        pygame.mixer.music.load("data/music.wav")
+
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             self.display.fill((0, 0, 0, 0))
