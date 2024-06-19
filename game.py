@@ -111,6 +111,8 @@ class Game:
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(-1)  # Infinite loop for bg music
 
+        self.sfx["ambience"].play(-1)
+
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
             self.display.fill((0, 0, 0, 0))
