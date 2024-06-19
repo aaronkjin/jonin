@@ -109,7 +109,7 @@ class Game:
     def run(self):
         pygame.mixer.music.load("data/music.wav")
         pygame.mixer.music.set_volume(0.5)
-        pygame.mixer.music.play()
+        pygame.mixer.music.play(-1)  # Infinite loop for bg music
 
         # Important to remember: each frame is an iteration in a loop, so dynamic sleep
         while True:
