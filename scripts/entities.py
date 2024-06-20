@@ -129,6 +129,7 @@ class Enemy(PhysicsEntity):
                 if (abs(dis[1]) < 16):
                     # Facing left
                     if (self.flip and dis[0] < 0):
+                        self.game.sfx["shoot"].play()
                         self.game.projectiles.append(
                             [[self.rect().centerx - 7, self.rect().centery], -1.5, 0])
 
