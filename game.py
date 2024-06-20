@@ -206,6 +206,7 @@ class Game:
                         self.projectiles.remove(projectile)
 
                         self.dead += 1
+                        self.sfx["hit"].play()
                         self.screenshake = max(16, self.screenshake)
 
                         # Lots of animations upon player death
