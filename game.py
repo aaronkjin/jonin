@@ -260,7 +260,8 @@ class Game:
                     if event.key == pygame.K_RIGHT:
                         self.movement[1] = True
                     if event.key == pygame.K_UP:
-                        self.player.jump()
+                        if self.player.jump():
+                            self.sfx["jump"].play()
                     if event.key == pygame.K_x:  # "X" to dash
                         self.player.dash()
 
