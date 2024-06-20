@@ -2,7 +2,7 @@
 
 A pixel ninja platformer game. Jōnin (上忍) means "high ninja."
 
-<img width="1000" alt="Screenshot 2024-06-08 at 4 03 23 PM" src="https://github.com/aaronkjin/jonin/assets/58490258/0a68f56e-fa8e-44cb-b357-21c972e36cc3">
+<img width="1000" alt="Screenshot 2024-06-19 at 8 17 43 PM" src="https://github.com/aaronkjin/jonin/assets/58490258/78dce9d8-3d13-4734-8b2f-1b52e0712d4a">
 
 ## Getting Started
 
