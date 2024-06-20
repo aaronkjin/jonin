@@ -306,6 +306,7 @@ class Player(PhysicsEntity):
 
     def dash(self):
         if not self.dashing:
+            self.game.sfx["dash"].play()
             # How much to dash + direction
             if self.flip:
                 self.dashing = -60  # Velocity = speed + direction
